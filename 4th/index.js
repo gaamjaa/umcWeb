@@ -1,4 +1,4 @@
-// 6강 추가 내용
+// 6강 추가 내용 
 const $commentForm = document.querySelector('#commentInputContainer');
 const $commentInput = document.querySelector('#commentInput');
 //
