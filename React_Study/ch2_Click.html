@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="root"></div>
+</body>
+    <script src = "https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src = "https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type = "text/babel">
+        //createElement 사용 안하고 만들기
+        const root = document.getElementById("root");
+        let counter = 0;
+        function countUp() {
+            counter = counter + 1;
+            render();
+        }
+
+        function render() {
+            ReactDOM.render(<Container/>, root); // 더할때마다 렌더링 다시 하기
+            // 렌더링이 다시 돼면, container 함수가 다시 호출 -> counter는 0에서 1이 됨
+            // == container가 root에 담긴다.
+        }
+        const Container = () => ( //렌더링이 한번만 돼서 업데이트 X. UI 새로고침이 없음.
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick = {countUp}>Click me</button>
+            </div>
+        );
+        render();
+    </script>
+</html>
+<!--리액트는 바뀐부분만 업데이트함.(=인터렉티브한 걸 만들 수 있다!) 바닐라는 바디/스팬이 싹다 업데이트-->
